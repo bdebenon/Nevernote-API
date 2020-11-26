@@ -1,0 +1,36 @@
+{
+  "action": {
+    "type": "string"
+  },
+  "body": {
+    "type": "string"
+  },
+  "notebook_id": {
+    "type": "integer"
+  },
+  "note_id": {
+    "type": "integer"
+  },
+  "title": {
+    "type": "string",
+    "minLength": 1,
+    "maxLength": 255
+  },
+  "tag": {
+    "type": "string",
+    "minLength": 1,
+    "maxLength": 255
+  },
+  "tags": {
+    "type": "array",
+    "items": {
+      "type": "string"
+    }
+  },
+  "query": {
+    "type": ["string", "integer"]
+  },
+  "query_type": {
+    "type": "string"
+  }
+}

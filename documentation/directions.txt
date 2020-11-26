@@ -1,0 +1,12 @@
+# Install NodeJS
+https://nodejs.org/en/download/
+
+# Install raml2html
+
+# Generate raml file
+'python3 generate_raml_file.py' or run in PyCharm
+
+# Generate html file
+Open PowerShell
+cd C:/Users/bdebe/Documents/GIT/AutoApply/auto_apply_api/documentation
+raml2html api_documentation.raml > api_documentation.html
