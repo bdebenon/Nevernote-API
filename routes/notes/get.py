@@ -21,13 +21,19 @@ def validate(input_dict):
 def notes_get(**kwargs):
     """
     # RAML START #
-    description: Returns a list of job applications the user has already submitted.
+    description: Query notes stored in Nevernote
     queryParameters:
-        user_id:
-            displayName: User ID
+        query_type:
+            displayName: Query Type
             type: string
-            description: The user ID for the accounts you are retrieving information for.
-            example: "bdebenon"
+            description: Query by 'note_id'
+            example: "note_id"
+            required: true
+        query:
+            displayName: Query
+            type: integer
+            description: Query term - what is the 'node_id' you are looking up?
+            example: 43
             required: true
     # RAML END #
     """

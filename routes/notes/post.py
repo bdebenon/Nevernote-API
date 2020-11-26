@@ -29,13 +29,45 @@ def validate(input_dict):
 def notes_post(**kwargs):
     """
     # RAML START #
-    description: Post applications to the database and queue
+    description: Create, Delete, or Update notes
     queryParameters:
-        user_id:
-            displayName: User ID
+        action:
+            displayName: Action
             type: string
-            description: User ID for the user whom made the click.
+            description: The action you would like to perform: "create", "delete", or "update"
+            example: "create"
+            required: true
+        note_id:
+            displayName: Note ID
+            type: integer
+            description: ID of the note you would like to perform operations on. Required for "delete" and "update" actions.
+            example: 43
+            required: false
+        title:
+            displayName: Note Title
+            type: string
+            description: Title of the note you are performing actions with. Required for "create" action.
+            example: "Shopping List"
+            required: false
+        body:
+            displayName: Note Body
+            type: string
+            description: Text body of the note you are performing actions with. Required for "create" action.
+            example: "Need to buy: eggs, cheeseburgers, coffee, soup."
+            required: false
+        tags:
+            displayName: Tags
+            type: array
+            items:
+                type: string
+            description: List of tags (strings) to associate with the note. Required for "create" action
             example: "bdebenon"
+            required: false
+        notebook_id:
+            displayName: Notebook ID
+            type: integer
+            description: Notebook ID of the note you are associating a note with. Required for "create" action.
+            example: 32
             required: false
     # RAML END #
     """

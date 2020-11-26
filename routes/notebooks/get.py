@@ -23,7 +23,7 @@ def validate(input_dict):
 def notebooks_get(**kwargs):
     """
     # RAML START #
-    description: Returns a list of job applications the user has already submitted.
+    description: Query notebooks stored in Nevernote
     queryParameters:
         query_type:
             displayName: Query Type
@@ -34,8 +34,8 @@ def notebooks_get(**kwargs):
         query:
             displayName: Query
             type: string or integer
-            description: Query term
-            example: "grocery_notebook" or 2"
+            description: Query term - id or title to search for
+            example: "'grocery_notebook' or '2'"
             required: true
         tag:
             displayName: Tag

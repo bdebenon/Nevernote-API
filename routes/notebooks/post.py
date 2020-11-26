@@ -23,13 +23,25 @@ def validate(input_dict):
 def notebooks_post(**kwargs):
     """
     # RAML START #
-    description: Post applications to the database and queue
+    description: Create or Delete notebooks
     queryParameters:
-        user_id:
-            displayName: User ID
+        action:
+            displayName: Action
             type: string
             description: User ID for the user whom made the click.
-            example: "bdebenon"
+            example: "create"
+            required: true
+        notebook_id:
+            displayName: Notebook ID
+            type: integer
+            description: ID of the notebook you would like to perform operations on. Required for 'delete' action.
+            example: "25"
+            required: false
+        title:
+            displayName: Notebook Title
+            type: string
+            description: Title of the notebook you would like to perform operations on. Required for 'create' action.
+            example: "Shopping Lists"
             required: false
     # RAML END #
     """
