@@ -1,3 +1,4 @@
+import argparse
 import json
 
 from flask import Flask, request, send_file
@@ -77,9 +78,17 @@ def notes():
 
 
 if __name__ == "__main__":
-    # Intended to be run on a server at the IP 'www.occuply.io' is pointing to
-    app.run(host='localhost', port="80")
-    pass
-    # PARAMS for FLASK through PyCharm (Additional Options)
-    # --cert ssl/fullchain.pem --key ssl/privkey.pem --port 443 --host 0.0.0.0
-    # --cert /etc/letsencrypt/live/www.multapply.io/fullchain.pem --key /etc/letsencrypt/live/www.multapply.io/privkey.pem --port 443 --host 0.0.0.0
+    # Setup command line arguments
+    arg_parser = argparse.ArgumentParser(description='Determining arguments to call correct function')
+    arg_parser.add_argument("-p", "--port", dest="port", required=False, help="Specify port to run Flask on.")
+    arg_parser.add_argument(
+        "-i", "--ip_address", dest="ip_address", required=False, help="Specify IP to run Flask on."
+        )
+
+    # Retrieve command line arguments
+    args = arg_parser.parse_args()
+    ip_address = args.ip_address if 'ip_address' in args else "0.0.0.0"
+    port = args.port if 'port' in args else "80"
+
+    # Start Flask
+    app.run(host=ip_address, port=port)
