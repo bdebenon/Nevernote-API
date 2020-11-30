@@ -28,7 +28,7 @@ Note: config.ini must have the correct host set under [postgresql] depending on 
 ```
 python -m pytest
 ```
-![Alt text](tests/example_test_result.png "Example output")
+![Alt text](tests/example_test_result.jpg "Example output")
 ---
 #### API Documentation
 Nevernote API uses RAML to automatically create documentation for the API.
