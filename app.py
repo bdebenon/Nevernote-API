@@ -10,6 +10,7 @@ from routes.notebooks.get import notebooks_get
 from routes.notebooks.post import notebooks_post
 from routes.notes.get import notes_get
 from routes.notes.post import notes_post
+from helpers.exceptions import InvalidFlaskRoute
 
 app = Flask(__name__)
 CORS(app)
@@ -23,8 +24,8 @@ def default():
         if request.method == "GET":
             return json.dumps({"message": "Hello World!"})
         else:
-            raise Exception("Invalid Request Type.")
-    except Exception as e:
+            raise InvalidFlaskRoute("Invalid Request Type.")
+    except InvalidFlaskRoute as e:
         return http_response.http_failure_response(
             404, http_response.InternalResponseCode.invalid_request_type, str(e)
             )
@@ -38,8 +39,8 @@ def documentation():
         if request.method == "GET":
             return send_file('documentation/api_documentation.html')
         else:
-            raise Exception("Invalid Request Type.")
-    except Exception as e:
+            raise InvalidFlaskRoute("Invalid Request Type.")
+    except InvalidFlaskRoute as e:
         return http_response.http_failure_response(
             404, http_response.InternalResponseCode.invalid_request_type, str(e)
             )
@@ -54,8 +55,8 @@ def notebooks():
         elif request.method == "POST":
             return notebooks_post(**request.json)
         else:
-            raise Exception("Invalid Request Type.")
-    except Exception as e:
+            raise InvalidFlaskRoute("Invalid Request Type.")
+    except InvalidFlaskRoute as e:
         return http_response.http_failure_response(
             404, http_response.InternalResponseCode.invalid_request_type, str(e)
             )
@@ -70,8 +71,8 @@ def notes():
         elif request.method == "POST":
             return notes_post(**request.json)
         else:
-            raise Exception("Invalid Request Type.")
-    except Exception as e:
+            raise InvalidFlaskRoute("Invalid Request Type.")
+    except InvalidFlaskRoute as e:
         return http_response.http_failure_response(
             404, http_response.InternalResponseCode.invalid_request_type, str(e)
             )
@@ -87,8 +88,8 @@ if __name__ == "__main__":
 
     # Retrieve command line arguments
     args = arg_parser.parse_args()
-    ip_address = args.ip_address if 'ip_address' in args else "0.0.0.0"
-    port = args.port if 'port' in args else "80"
+    ip_address = args.ip_address if args.ip_address else "0.0.0.0"
+    port = args.port if args.ip_address else "80"
 
     # Start Flask
     app.run(host=ip_address, port=port)

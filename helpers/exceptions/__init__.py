@@ -4,3 +4,7 @@ class InvalidResultError(Exception):
 
 class ConfigMissingError(Exception):
     pass
+
+
+class InvalidFlaskRoute(Exception):
+    pass
