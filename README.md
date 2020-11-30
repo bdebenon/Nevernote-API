@@ -20,10 +20,15 @@ docker run --network=nevernote_network -d -p 80:80 --name nevernote_api nevernot
 ```
 ---
 #### Testing
-Nevernote API uses the PyTest framework to conduct it's unit tests. To start PyTest, simply run the follow from the root directory
+Nevernote API uses the PyTest framework to conduct it's unit tests.
+To start PyTest, simply run the follow from the root directory wherever you are running Flask.
+(For example, if you are running it on a docker container, you would need to execute PyTest from inside the container.)
+
+Note: config.ini must have the correct host set under [postgresql] depending on where you are running the test from. 
 ```
 python -m pytest
 ```
+![Alt text](tests/example_test_result.png "Example output")
 ---
 #### API Documentation
 Nevernote API uses RAML to automatically create documentation for the API.
