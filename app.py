@@ -78,7 +78,7 @@ def notes():
 
 if __name__ == "__main__":
     # Intended to be run on a server at the IP 'www.occuply.io' is pointing to
-    # app.run(ssl_context=('ssl/multapply_cert.pem', 'ssl/multapply_key.pem'), host='0.0.0.0', port="443")
+    app.run(host='localhost', port="80")
     pass
     # PARAMS for FLASK through PyCharm (Additional Options)
     # --cert ssl/fullchain.pem --key ssl/privkey.pem --port 443 --host 0.0.0.0
