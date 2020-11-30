@@ -1,7 +1,23 @@
 Nevernote API
 ---
-#### Deploying
-    TODO
+#### Deploying via Docker
+
+```
+# Setup repo
+git clone https://github.com/bdebenon/Nevernote-API.git
+cd Nevernote-API
+
+# Setup network
+docker network create --driver bridge nevernote_network
+
+# Setup database via dockerfile
+docker build -t nevernote_database -f .\docker\database.dockerfile .
+docker run --network=nevernote_network -d -p 5432:5432 --name nevernote_database nevernote_database
+
+# Setup api via dockerfile
+docker build -t nevernote_api -f .\docker\api.dockerfile .
+docker run --network=nevernote_network -d -p 80:80 --name nevernote_api nevernote_api
+```
 ---
 #### Testing
 Nevernote API uses the PyTest framework to conduct it's unit tests. To start PyTest, simply run the follow from the root directory
